@@ -1,12 +1,11 @@
 package com.codebay.goldeneye;
 
-import org.springframework.stereotype.Controller;  
-import org.springframework.ui.Model;  
-import org.springframework.web.bind.annotation.GetMapping;  
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class WebController {  
@@ -19,8 +18,12 @@ public class WebController {
     public String showEmail(Employee employee, Model model) {
         //Checks if the department and the location matches with the valid options
         if(checkDepartment(employee.getDepartment(), employee.getLocation())) {
-            employee.setEmail(employee.getName().toLowerCase(), employee.getSurname().toLowerCase(),
-                    employee.getLocation().toLowerCase(), employee.getDepartment().toLowerCase());
+            String name = StringUtils.stripAccents(employee.getName().toLowerCase());
+            String surname = StringUtils.stripAccents(employee.getSurname().toLowerCase());
+            String location = employee.getLocation().toLowerCase();
+            String department = (employee.getDepartment().equals("Research & development")) ? "research&development" : employee.getDepartment().toLowerCase();
+
+            employee.setEmail(name, surname, location, department);
         }
 
         //API to control the undesired characters
