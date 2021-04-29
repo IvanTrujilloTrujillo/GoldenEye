@@ -13,8 +13,15 @@
             <p>Surname: ${employee.surname}</p>
             <p>Location: ${employee.location}</p>
             <p>Department: ${employee.department}</p>
-            <p>and here is your company email:</p>
-            <p>Email: ${employee.email}</p>
+            <#if employee.email?? >
+                <p>and here is your company email:</p>
+                <p>Email: ${employee.email}</p>
+            <#else>
+                <p>Location and Department don't match with the valid options:</p>
+                <p>Departments in Milan: Design, Business & Advertising</p>
+                <p>Departments in Spain: Research and development & Business</p>
+                <p>Departments in New York: Business & Advertising</p>
+            </#if>
         <#else>
             <p>Please, fill the following form in order to receive a company email address.</p>
             <form action="/" method="post">

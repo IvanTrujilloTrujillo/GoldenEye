@@ -16,10 +16,25 @@ public class WebController {
 
     @PostMapping("/")
     public String showEmail(Employee employee, Model model) {
-        model.addAttribute("employee", employee);
-        employee.setEmail(employee.getName(), employee.getSurname(), employee.getLocation(), employee.getDepartment());
-        //System.out.println(employee.getEmail());
+        //Checks if the department and the location matches with the valid options
+        if(checkDepartment(employee.getDepartment(), employee.getLocation())) {
+            employee.setEmail(employee.getName().toLowerCase(), employee.getSurname().toLowerCase(),
+                    employee.getLocation().toLowerCase(), employee.getDepartment().toLowerCase());
+        }
         model.addAttribute("employee", employee);
         return "index";
+    }
+
+    private boolean checkDepartment(String department, String location) {
+        switch (location) {
+            case "Milan":
+                return department.equals("Design") || department.equals("Business") || department.equals("Advertising");
+            case "Spain":
+                return department.equals("Research & development") || department.equals("Business");
+            case "New York":
+                return department.equals("Business") || department.equals("Advertising");
+        }
+
+        return false;
     }
 }
