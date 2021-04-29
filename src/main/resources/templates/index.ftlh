@@ -6,6 +6,26 @@
     </head>
     <body>
         <h1>Goldeneye</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse egestas tempus magna, a pretium magna dapibus vitae. Cras consequat convallis molestie. Mauris fringilla iaculis mi auctor pharetra. Praesent libero felis, ornare tempor feugiat efficitur, dignissim ut nunc. Suspendisse dignissim massa nec libero consectetur, ut vestibulum diam pharetra. Fusce eget dapibus felis, quis dignissim mauris. Donec tristique lorem nec enim interdum, vitae luctus libero posuere. Nulla eleifend, orci sit amet varius facilisis, erat magna faucibus tortor, accumsan condimentum felis turpis sed sem. Quisque laoreet laoreet ante.</p>
+        <h2>Email Creator</h2>
+        <p>Please, fill the following form in order to receive a company email address.</p>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname">
+            <select>
+                <option value="milan">Milan</option>
+                <option value="spain">Spain</option>
+                <option value="new_york">New York</option>
+            </select>
+            <select>
+                <option value="design">Design</option>
+                <option value="business">Business</option>
+                <option value="advertising">Advertising</option>
+                <option value="research_development">Research & development</option>
+            </select>
+            <button>Send</button>
+        /form>
+
     </body>
 </html>
