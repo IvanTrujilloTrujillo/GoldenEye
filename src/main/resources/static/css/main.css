@@ -22,6 +22,10 @@ form, .data, .email {
     text-align: center;
 }
 
+.error {
+    color: red;
+}
+
 .label {
     margin: 20px 0px 10px 5px;
 }

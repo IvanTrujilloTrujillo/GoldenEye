@@ -20,10 +20,12 @@
                 <p>and here is your company email:</p>
                 <p class="email">${employee.email}</p>
             <#else>
-                <p>Location and Department don't match with the valid options:</p>
-                <p>Departments in Milan: Design, Business & Advertising</p>
-                <p>Departments in Spain: Research and development & Business</p>
-                <p>Departments in New York: Business & Advertising</p>
+                <p class="error">(ERROR) Location and Department don't match with the valid options:</p>
+                <ul class="error">
+                    <li>Departments in Milan: Design, Business & Advertising</li>
+                    <li>Departments in Spain: Research and development & Business</li>
+                    <li>Departments in New York: Business & Advertising</li>
+                </ul>
             </#if>
         <#else>
             <p>Please, fill the following form in order to receive a company email address.</p>

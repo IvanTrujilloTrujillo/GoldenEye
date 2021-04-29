@@ -20,7 +20,7 @@ public class WebController {
         if(checkDepartment(employee.getDepartment(), employee.getLocation())) {
             String name = StringUtils.stripAccents(employee.getName().toLowerCase());
             String surname = StringUtils.stripAccents(employee.getSurname().toLowerCase());
-            String location = employee.getLocation().toLowerCase();
+            String location = (employee.getLocation().equals("New York")) ? "newyork" : employee.getLocation().toLowerCase();
             String department = (employee.getDepartment().equals("Research & development")) ? "research&development" : employee.getDepartment().toLowerCase();
 
             employee.setEmail(name, surname, location, department);
