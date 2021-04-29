@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;  
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -21,6 +22,10 @@ public class WebController {
             employee.setEmail(employee.getName().toLowerCase(), employee.getSurname().toLowerCase(),
                     employee.getLocation().toLowerCase(), employee.getDepartment().toLowerCase());
         }
+
+        //API to control the undesired characters
+        //cleanUndesiredCharacters(employee);
+
         model.addAttribute("employee", employee);
         return "index";
     }
@@ -36,5 +41,15 @@ public class WebController {
         }
 
         return false;
+    }
+
+    private void cleanUndesiredCharacters(Employee employee) {
+        String uri = "http://urlName/";
+
+        RestTemplate restTemplate = new RestTemplate();
+        employee.setName(restTemplate.getForObject(uri + employee.getName(), String.class));
+        employee.setSurname(restTemplate.getForObject(uri + employee.getSurname(), String.class));
+        employee.setLocation(restTemplate.getForObject(uri + employee.getLocation(), String.class));
+        employee.setDepartment(restTemplate.getForObject(uri + employee.getDepartment(), String.class));
     }
 }
