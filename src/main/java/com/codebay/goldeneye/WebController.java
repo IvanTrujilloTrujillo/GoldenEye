@@ -17,6 +17,9 @@ public class WebController {
     @PostMapping("/")
     public String showEmail(Employee employee, Model model) {
         model.addAttribute("employee", employee);
+        employee.setEmail(employee.getName(), employee.getSurname(), employee.getLocation(), employee.getDepartment());
+        //System.out.println(employee.getEmail());
+        model.addAttribute("employee", employee);
         return "index";
     }
 }
